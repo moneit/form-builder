@@ -12,7 +12,7 @@ export interface IAbstractIconProps extends IIconProps {
 export const Icon: FC<IAbstractIconProps> = ({
   className = '',
   size,
-  color,
+  color = 'currentColor',
   baseWidth,
   baseHeight,
   children,
@@ -21,7 +21,7 @@ export const Icon: FC<IAbstractIconProps> = ({
   const width = useMemo(() => size || baseWidth, [size, baseWidth]);
   const height = useMemo(() => width / baseWidth * baseHeight, [width, baseWidth, baseHeight]);
   const colors = useMemo(() => (
-    (Array.isArray(color) ? color : [color]).map((col) => col ? ICON_DEFAULT_COLORS[col] ?? 'currentColor' : 'currentColor')
+    (Array.isArray(color) ? color : [color]).map((col) => ICON_DEFAULT_COLORS[col] ?? color)
   ), [color]);
 
   return (

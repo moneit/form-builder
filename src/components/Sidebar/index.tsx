@@ -17,8 +17,8 @@ const Sidebar: FC<ISidebarProps> = ({
 }) => {
   return (
     <div className={classnames(
-      'h-full flex flex-col transition-all max-w-[250px] delay-300 duration-1000',
-      {'-ml-[250px]': !visible },
+      'h-full flex flex-col transition-all max-w-[300px] delay-300 duration-1000',
+      {'-ml-[300px]': !visible },
     )}>
       <div className="bg-secondary p-2 flex justify-between">
         <span className="text-white">{title}</span>
@@ -28,7 +28,9 @@ const Sidebar: FC<ISidebarProps> = ({
           onClick={onClose}
         />
       </div>
-      {children}
+      <div className="overflow-auto">
+        {children}
+      </div>
     </div>
   )
 };

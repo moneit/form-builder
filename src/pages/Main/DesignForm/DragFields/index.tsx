@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropzone from 'react-dropzone'
 import {Button} from '../../../../components';
 
 const DragFields = () => {
@@ -6,11 +7,20 @@ const DragFields = () => {
     <div>
       <p className="text-right text-gray-300">Page 1</p>
       <div className="bg-white p-3">
-        <div className="border border-dashed text-gray-300 text-sm h-16 flex items-center justify-center mb-4">
-          Drag Fields Here
-        </div>
+        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+          {({getRootProps, getInputProps}) => (
+            <section className="border border-dashed h-16 mb-4">
+              <div {...getRootProps()} className="w-full h-full">
+                <input {...getInputProps()} />
+                <p className="w-full h-full text-gray-300 text-sm flex items-center justify-center">
+                  Drag Fields Here
+                </p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
         <div className="flex justify-end">
-          <Button text="Continue" />
+          <Button color="primary">Continue</Button>
         </div>
       </div>
     </div>

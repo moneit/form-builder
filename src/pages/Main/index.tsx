@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from '../../components/Tab';
+import {Tab} from '../../components';
 
 import DesignForm from './DesignForm';
 import FormSettings from './FormSettings';
@@ -20,10 +20,9 @@ const tabs = [
   },
 ];
 
-
 const Main = () => {
   return (
-    <div className="bg-gray w-screen h-screen flex flex-col overflow-hidden">
+    <div className="bg-gray w-screen h-screen flex flex-col">
       <Tab
         tabs={tabs}
         tabHeaderContainerClass="border-b"

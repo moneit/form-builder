@@ -7,9 +7,11 @@ export interface IIconProps {
   onClick?: ReactEventHandler;
 }
 
-export type Color = 'white' | 'black' | 'text' | 'primary' | 'info' | 'success' | 'danger' | 'blue' | 'blue-light' | 'blue-dark';
+export type Color = 'white' | 'black' | 'text' | 'primary' | 'info' | 'success' | 'danger' | 'blue' | 'blue-light' | 'blue-dark' | string;
 
-export const ICON_DEFAULT_COLORS = {
+export const ICON_DEFAULT_COLORS: {
+  [key: string]: string,
+ } = {
   white: '#FFF',
   black: '#000',
   text: '#424242',

@@ -51,7 +51,7 @@ const accountItems = [
 
 const Account = () => {
   return (
-    <div className="overflow-auto p-4 flex-grow">
+    <div className="p-4 flex-grow bg-gray-light">
       {accountItems.map((item, index) => (
         <SidebarItem
           key={index}

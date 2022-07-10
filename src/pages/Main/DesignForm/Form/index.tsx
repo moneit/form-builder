@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
-import FormField from "../../../../components/FormField";
-import {Button} from "../../../../components";
+import FormField from '../../../../components/FormField';
+import {Button} from '../../../../components';
+
+interface IForm {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  companyName: string;
+  accountType: string;
+}
 
 const Form = () => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<IForm>({
     email: '',
     firstName: '',
     lastName: '',
@@ -17,7 +26,7 @@ const Form = () => {
       ...form,
       [field]: value
     });
-  }
+  };
 
   return (
     <div className="bg-white p-5">
@@ -61,13 +70,15 @@ const Form = () => {
       <div className="grid grid-cols-2 gap-3 mb-3">
         <FormField
           label="Account Type"
+          type="select"
+          activated={false}
           value={form.accountType}
           onChange={(e) => onInputChange('accountType', e.target.value)}
         />
       </div>
       <div className="flex justify-end">
-        <Button text="Back" className="bg-gray-400 mr-3" />
-        <Button text="Submit" />
+        <Button color="gray" className="mr-3" >Back</Button>
+        <Button color="primary" type="submit" >Submit</Button>
       </div>
     </div>
   )
