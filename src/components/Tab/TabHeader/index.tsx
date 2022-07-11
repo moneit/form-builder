@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 interface ITabHeaderProps {
@@ -8,12 +8,12 @@ interface ITabHeaderProps {
   tabHeaderItemClass?: string;
 }
 
-const TabHeader: FC<ITabHeaderProps> = ({
+const TabHeader = ({
   title,
   isActive,
   onTabHeaderItemClick,
   tabHeaderItemClass = 'px-4 py-2'
-}) => {
+}: ITabHeaderProps) => {
   return(
     <div
       className={classnames(

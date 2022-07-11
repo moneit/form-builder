@@ -24,7 +24,7 @@ const DesignForm = () => {
   const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
 
   return (
-    <div className="pt-3 flex-grow flex h-0">
+    <div className="pt-3 flex-grow flex">
       <Sidebar
         title="Available Fields"
         visible={sidebarVisible}

@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import {Dropdown} from '..';
 import {EditIcon, EyeIcon, MoreVertIcon} from '../icons';
 
 type type = 'input' | 'select';
 
-interface IFormField {
+interface IFormFieldProps {
   label: string;
   type?: type;
   value: string;
@@ -14,14 +14,14 @@ interface IFormField {
   onChange?: (e: any) => void;
 }
 
-const FormField: FC<IFormField> = ({
+const FormField = ({
   label,
   type = 'input',
   value,
   disabled = false,
   activated = true,
   onChange,
-}) => {
+}: IFormFieldProps) => {
   return (
     <div className="border border-dashed border-transparent hover:border-primary px-3 py-2 rounded">
       <div className="flex justify-between mb-1">

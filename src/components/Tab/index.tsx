@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useState} from 'react';
+import React, {ReactNode, useState} from 'react';
 import classnames from 'classnames';
 
 import TabHeader from './TabHeader';
@@ -14,11 +14,11 @@ interface ITabProps {
   tabHeaderContainerClass?: string;
 }
 
-const Tab: FC<ITabProps> = ({
+const Tab = ({
   tabs,
   tabHeaderItemClass ,
   tabHeaderContainerClass = ''
-}) => {
+}: ITabProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return(

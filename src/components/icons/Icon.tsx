@@ -1,15 +1,15 @@
-import React, { FC, ReactElement, useMemo } from "react";
-import { Color, ICON_DEFAULT_COLORS, IIconProps } from "./types";
-import classnames from "classnames";
+import React, { ReactElement, useMemo } from 'react';
+import { color, iconDefaultColors, IIconProps } from './types';
+import classnames from 'classnames';
 
 export interface IAbstractIconProps extends IIconProps {
   baseWidth: number;
   baseHeight: number;
-  color?: Color[] | Color;
+  color?: color[] | color;
   children(width: string, height: string, ...colors: string[]): ReactElement;
 }
 
-export const Icon: FC<IAbstractIconProps> = ({
+export const Icon = ({
   className = '',
   size,
   color = 'currentColor',
@@ -17,11 +17,11 @@ export const Icon: FC<IAbstractIconProps> = ({
   baseHeight,
   children,
   ...props
-}) => {
+}: IAbstractIconProps) => {
   const width = useMemo(() => size || baseWidth, [size, baseWidth]);
   const height = useMemo(() => width / baseWidth * baseHeight, [width, baseWidth, baseHeight]);
   const colors = useMemo(() => (
-    (Array.isArray(color) ? color : [color]).map((col) => ICON_DEFAULT_COLORS[col] ?? color)
+    (Array.isArray(color) ? color : [color]).map((col) => iconDefaultColors[col] ?? color)
   ), [color]);
 
   return (

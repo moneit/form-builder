@@ -1,8 +1,8 @@
-import React, {FC} from "react";
-import {IIconProps} from "./types";
-import {Icon} from "./Icon";
+import React from 'react';
+import {IIconProps} from './types';
+import {Icon} from './Icon';
 
-export const MoreVertIcon: FC<IIconProps> = (props) => (
+export const MoreVertIcon = (props: IIconProps) => (
   <Icon baseWidth={4.415} baseHeight={17.658} {...props}>
     {(width, height, color) => (
       <svg width={width} height={height} viewBox="0 0 4.415 17.658">

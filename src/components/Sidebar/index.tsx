@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from 'react';
+import React, {PropsWithChildren, ReactNode} from 'react';
 import classnames from 'classnames';
 import {AngleLeftIcon} from '../icons';
 
@@ -9,15 +9,15 @@ interface ISidebarProps {
   children: ReactNode;
 }
 
-const Sidebar: FC<ISidebarProps> = ({
+const Sidebar = ({
   title,
   visible,
   onClose,
   children
-}) => {
+}: PropsWithChildren<ISidebarProps>) => {
   return (
     <div className={classnames(
-      'h-full flex flex-col transition-all max-w-[300px] delay-300 duration-1000',
+      'h-full flex flex-col transition-all max-w-[300px] delay-300 duration-1000 ml-2 border',
       {'-ml-[300px]': !visible },
     )}>
       <div className="bg-secondary p-2 flex justify-between">

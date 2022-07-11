@@ -29,6 +29,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '8rem',
+        },
+      },
       screens: {
         xs: '550px',
         'max-xs': { max: '549px' },
@@ -39,6 +48,9 @@ module.exports = {
       },
       colors,
       borderColors: colors,
+      borderRadius: {
+        'large': '48px'
+      },
       backgroundColors: colors,
       textColor: colors,
       fontFamily: {

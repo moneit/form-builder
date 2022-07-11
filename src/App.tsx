@@ -1,5 +1,5 @@
-import React, {memo} from "react";
-import Main from "./pages/Main";
+import React, {memo} from 'react';
+import Main from './pages/Main';
 
 const App = memo(() => {
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
+import {AppLayout} from '../../layouts';
+import {Header} from '../../parts';
 import {Tab} from '../../components';
-
 import DesignForm from './DesignForm';
 import FormSettings from './FormSettings';
 import DataModel from './DataModel';
@@ -22,12 +23,13 @@ const tabs = [
 
 const Main = () => {
   return (
-    <div className="bg-gray w-screen h-screen flex flex-col">
+    <AppLayout >
+      <Header />
       <Tab
         tabs={tabs}
         tabHeaderContainerClass="border-b"
       />
-    </div>
+    </AppLayout>
   )
 };
 

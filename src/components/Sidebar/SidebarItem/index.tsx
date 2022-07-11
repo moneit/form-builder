@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 
-interface ISidebarItem {
+interface ISidebarItemProps {
   icon: any;
   name: string;
 }
 
-const SidebarItem: FC<ISidebarItem> = ({icon, name}) => {
+const SidebarItem = ({icon, name}: ISidebarItemProps) => {
   return (
     <div className="flex items-center bg-primary-light mb-3 rounded p-2">
       {icon}
