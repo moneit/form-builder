@@ -1,6 +1,6 @@
 import React, {ReactElement, useEffect, PropsWithChildren, useMemo, useRef, useState} from 'react';
 import classnames from 'classnames';
-import Button, {IButtonProps} from '../Button';
+import {Button, IButtonProps} from '../Button';
 
 export type XPosition = 'before' | 'after' | 'left' | 'center' | 'right';
 export type YPosition = 'above' | 'below' | 'top' | 'bottom';
@@ -31,7 +31,7 @@ export interface IDropdownProps {
   onDropdownClosed?: () => void;
 }
 
-const Dropdown = ({
+export const Dropdown = ({
   className = '',
   text = '',
   button,
@@ -188,5 +188,3 @@ const Dropdown = ({
     </div>
   );
 };
-
-export default Dropdown;

@@ -29,7 +29,6 @@ export const MessageIcon = (props: IIconProps) => (
           />
         </g>
       </svg>
-
     )}
   </Icon>
 );

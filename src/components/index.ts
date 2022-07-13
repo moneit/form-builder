@@ -1,5 +1,6 @@
-export { default as Button } from './Button';
-export { default as Dropdown } from './Dropdown';
-export { default as Sidebar } from './Sidebar';
-export { default as Tab } from './Tab';
+export * from './Button';
+export * from './Dropdown';
+export * from './Sidebar';
+export * from './Tab';
 export * from './NavItem';
+export * from './FormField';

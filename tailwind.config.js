@@ -19,7 +19,8 @@ const colors = {
     DEFAULT: '#2c3e4e'
   },
   gray: {
-    DEFAULT: '#fafafa'
+    DEFAULT: '#fafafa',
+    light: '#f8fcfe'
   }
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {TradeIcon} from '../../components/icons';
 
 export const Footer = () => {
   return (
@@ -6,18 +7,14 @@ export const Footer = () => {
       <div className="container mx-auto flex justify-between">
         <div className="max-w-70">
           <div className="flex items-center mb-4">
-            <div>logo</div>
-            <div className="text-white">
-              <h1 className="text-2xl font-bold">Trade</h1>
-              <p className="text-xl">Capital Partners</p>
-            </div>
+            <TradeIcon />
           </div>
           <p className="text-white text-sm">
             The most advanced Trade Finance Platform built specifically for Emerging Markets that lets you access capital on your own terms.
           </p>
         </div>
         <div>
-          <h2 className="text-2xl text-white mb-4 font-bold">Contact Us</h2>
+          <h2 className="text-2xl text-white my-4 font-bold">Contact Us</h2>
           <div className="text-white text-sm">
             Address: DD-15-134-004-007, Level 15, <br />
             Webwork Hub71, AI Khatem Tower, ADGM <br />
@@ -26,7 +23,7 @@ export const Footer = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-2xl text-white mb-4 font-bold">Links</h2>
+          <h2 className="text-2xl text-white my-4 font-bold">Links</h2>
           <ul className="text-sm text-white">
             <li><a href="https://test.com" target="_blank" rel="noreferrer">Privacy Policy</a></li>
             <li><a href="https://test.com" target="_blank" rel="noreferrer">Terms & Conditions</a></li>

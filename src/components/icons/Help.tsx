@@ -21,7 +21,6 @@ export const HelpIcon = (props: IIconProps) => (
           </g>
         </g>
       </svg>
-
     )}
   </Icon>
 );

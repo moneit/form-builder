@@ -5,7 +5,8 @@ import {EditIcon, EyeIcon, MoreVertIcon} from '../icons';
 
 type type = 'input' | 'select';
 
-interface IFormFieldProps {
+export interface IFormFieldProps {
+  name: string;
   label: string;
   type?: type;
   value: string;
@@ -14,7 +15,8 @@ interface IFormFieldProps {
   onChange?: (e: any) => void;
 }
 
-const FormField = ({
+export const FormField = ({
+  name,
   label,
   type = 'input',
   value,
@@ -59,6 +61,7 @@ const FormField = ({
         <>
           {type === 'input' && (
             <input
+              name={name}
               type="text"
               className={classnames(
                 "w-full text-sm bg-primary-lighter text-md px-2 py-1 border focus:outline-none rounded",
@@ -71,7 +74,8 @@ const FormField = ({
           )}
           {type === 'select' && (
             <select
-              value="1"
+              value={value}
+              name={name}
               onChange={onChange}
               className={classnames(
                 "w-full text-sm bg-primary-lighter text-md px-2 py-1 border focus:outline-none rounded",
@@ -86,5 +90,3 @@ const FormField = ({
     </div>
   )
 };
-
-export default FormField;

@@ -19,7 +19,7 @@ export interface IButtonProps {
   disabled?: boolean;
 }
 
-const Button = ({
+export const Button = ({
  children,
  className = '',
  variant = 'standard',
@@ -109,5 +109,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;

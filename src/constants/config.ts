@@ -1,2 +1,3 @@
-export const CONFIG = {
+export const config = {
+  field: 'field'
 };

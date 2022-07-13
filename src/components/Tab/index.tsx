@@ -1,9 +1,8 @@
 import React, {ReactNode, useState} from 'react';
 import classnames from 'classnames';
+import {TabHeader} from './TabHeader';
 
-import TabHeader from './TabHeader';
-
-interface ITabContent {
+export interface ITabContent {
   title: string;
   component?: ReactNode
 }
@@ -14,7 +13,7 @@ interface ITabProps {
   tabHeaderContainerClass?: string;
 }
 
-const Tab = ({
+export const Tab = ({
   tabs,
   tabHeaderItemClass ,
   tabHeaderContainerClass = ''
@@ -38,5 +37,3 @@ const Tab = ({
     </>
   )
 };
-
-export default Tab;
