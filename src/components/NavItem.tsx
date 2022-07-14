@@ -8,11 +8,16 @@ interface NavItemProps {
   onClick?: () => void;
 }
 
-const NavItem = ({ icon, text, className = '', onClick }: NavItemProps) => {
+const NavItem = ({
+  icon,
+  text,
+  className = '',
+  onClick: handleClick,
+}: NavItemProps) => {
   return (
     <div
       className={classnames('flex items-center cursor-pointer', className)}
-      onClick={onClick}
+      onClick={handleClick}
       aria-hidden="true"
     >
       {icon}
