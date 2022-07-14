@@ -1,6 +1,4 @@
-// level 1
 export { default as Tabs } from './Tabs';
-// level 2
 export { default as AppLayout } from './AppLayout';
 export { default as Button } from './Button';
 export { default as DataModel } from './DataModel';
