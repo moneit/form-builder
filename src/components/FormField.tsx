@@ -1,7 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
-import {Dropdown} from '..';
-import {EditIcon, EyeIcon, MoreVertIcon} from '../icons';
+import { Dropdown } from './Dropdown';
+import {
+  EditIcon,
+  EyeIcon,
+  MoreVertIcon,
+} from './icons';
 
 type type = 'input' | 'select';
 

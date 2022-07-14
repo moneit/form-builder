@@ -1,5 +1,12 @@
-import React, {useState} from 'react';
-import {Button, IFormFieldProps, ITabContent, Sidebar, Tab} from '../../../components';
+import React, { useState } from 'react';
+import {
+  IFormFieldProps,
+  ITabContent,
+  Button,
+  Sidebar,
+  Tab
+} from '@/components';
+
 import Account from './Account';
 import FormPanel from './FormPanel';
 
@@ -27,7 +34,7 @@ const emptyForm: IForm = {
   fields: [],
 };
 
-const DesignForm = () => {
+export const DesignForm = () => {
   const [forms, setForms] = useState<IForm[]>([emptyForm]);
 
   const addNewForm = () => {
@@ -42,9 +49,9 @@ const DesignForm = () => {
       i !== index
         ? form
         : {
-            ...form,
-            fields: [...form.fields, item]
-          }
+          ...form,
+          fields: [...form.fields, item]
+        }
     ));
   };
 
@@ -86,5 +93,3 @@ const DesignForm = () => {
     </div>
   )
 };
-
-export default DesignForm;

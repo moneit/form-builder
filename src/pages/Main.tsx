@@ -1,11 +1,13 @@
 import React from 'react';
-import {AppLayout} from '../../layouts';
-import {Header} from '../../parts';
-import {ITabContent, Tab} from '../../components';
-
-import DesignForm from './DesignForm';
-import FormSettings from './FormSettings';
-import DataModel from './DataModel';
+import {
+  ITabContent,
+  AppLayout,
+  Tab,
+  Header,
+  DataModel,
+  FormSettings,
+  DesignForm,
+} from '@/components';
 
 const tabs: ITabContent[] = [
   {

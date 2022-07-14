@@ -8,7 +8,7 @@ interface ITabHeaderProps {
   tabHeaderItemClass?: string;
 }
 
-export const TabHeader = ({
+const TabHeader = ({
   title,
   isActive,
   onTabHeaderItemClick,
@@ -26,3 +26,5 @@ export const TabHeader = ({
     </div>
   )
 };
+
+export default TabHeader;

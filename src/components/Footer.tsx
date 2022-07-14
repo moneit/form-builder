@@ -1,5 +1,5 @@
 import React from 'react';
-import {TradeIcon} from '../../components/icons';
+import { TradeIcon } from './icons';
 
 export const Footer = () => {
   return (

@@ -1,8 +1,12 @@
-import React, {ReactNode} from 'react';
-import {SidebarItem} from '../../../../components/Sidebar/SidebarItem';
-import {DropdownIcon, EmailIcon, PhoneIcon, TextIcon} from '../../../../components/icons';
-import {colors} from '../../../../constants';
-import {IFormFieldProps} from '../../../../components';
+import React, { ReactNode } from 'react';
+import { IFormFieldProps, SidebarItem } from '@/components';
+import { colors } from '@/constants';
+import {
+  DropdownIcon,
+  EmailIcon,
+  PhoneIcon,
+  TextIcon
+} from '@/components/icons';
 
 interface IAccountItem {
   icon: ReactNode;

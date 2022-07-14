@@ -1,7 +1,7 @@
 import React from 'react';
-import {useDrag} from 'react-dnd';
-import {config} from '../../../constants';
-import {IFormFieldProps} from '../../FormField';
+import { useDrag } from 'react-dnd';
+import { config } from '@/constants';
+import { IFormFieldProps } from './FormField';
 
 export interface ISidebarItemProps {
   icon: any;

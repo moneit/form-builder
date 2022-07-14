@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {useDrop} from 'react-dnd';
-import {config} from '../../../../constants';
-import {Button, FormField} from '../../../../components';
-import {IForm} from '../index';
+import React, { useState } from 'react';
+import { useDrop } from 'react-dnd';
+import { Button, FormField } from '@/components';
+import { IForm } from './index';
+import { config } from '@/constants';
 
 interface IFormPanelProps {
   index: number;

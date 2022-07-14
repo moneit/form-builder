@@ -1,12 +1,18 @@
-import React, {PropsWithChildren, useState} from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import classnames from 'classnames';
-import {AngleLeftIcon, ArrowRightIcon, HelpIcon, MessageIcon, SettingIcon, UserIcon} from '../../components/icons';
-import {Footer} from '../../parts';
-import {NavItem} from '../../components';
+import { NavItem, Footer } from './index';
+import {
+  AngleLeftIcon,
+  ArrowRightIcon,
+  HelpIcon,
+  MessageIcon,
+  SettingIcon,
+  UserIcon
+} from '@/components/icons';
 
 export const AppLayout = ({
-   children
- }:PropsWithChildren) => {
+  children
+}:PropsWithChildren) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapse = () => {
@@ -29,12 +35,12 @@ export const AppLayout = ({
               />
               <NavItem
                 icon={collapsed ? (
-                    <ArrowRightIcon size={16} color="white" />
-                  ) : (
-                    <AngleLeftIcon
-                      size={16}
-                      color="white"
-                    />
+                  <ArrowRightIcon size={16} color="white" />
+                ) : (
+                  <AngleLeftIcon
+                    size={16}
+                    color="white"
+                  />
                 )}
                 text="Collapse"
                 onClick={toggleCollapse}

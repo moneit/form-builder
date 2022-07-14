@@ -1,6 +1,13 @@
-import React, {ReactElement, useEffect, PropsWithChildren, useMemo, useRef, useState} from 'react';
+import React, {
+  ReactElement,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import classnames from 'classnames';
-import {Button, IButtonProps} from '../Button';
+import { Button, IButtonProps } from './Button';
 
 export type XPosition = 'before' | 'after' | 'left' | 'center' | 'right';
 export type YPosition = 'above' | 'below' | 'top' | 'bottom';
@@ -32,25 +39,25 @@ export interface IDropdownProps {
 }
 
 export const Dropdown = ({
-  className = '',
-  text = '',
-  button,
-  buttonProps,
-  arrow,
-  dropdown,
-  dropdownClass = '',
-  dropdownItemClass = '',
-  dropdownOpened = false,
-  activeDropdownItemClass = 'font-bold',
-  disabled,
-  activeItem,
-  xPosition = 'left',
-  yPosition = 'below',
-  children,
-  onSelect = () => {},
-  onDropdownOpened = () => {},
-  onDropdownClosed = () => {},
-}: PropsWithChildren<IDropdownProps>) => {
+                           className = '',
+                           text = '',
+                           button,
+                           buttonProps,
+                           arrow,
+                           dropdown,
+                           dropdownClass = '',
+                           dropdownItemClass = '',
+                           dropdownOpened = false,
+                           activeDropdownItemClass = 'font-bold',
+                           disabled,
+                           activeItem,
+                           xPosition = 'left',
+                           yPosition = 'below',
+                           children,
+                           onSelect = () => {},
+                           onDropdownOpened = () => {},
+                           onDropdownClosed = () => {},
+                         }: PropsWithChildren<IDropdownProps>) => {
   const [opened, setOpened] = useState(dropdownOpened);
   const ref = useRef<HTMLDivElement>(null);
 

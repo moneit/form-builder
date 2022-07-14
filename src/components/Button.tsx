@@ -1,4 +1,9 @@
-import React, {MouseEventHandler, PropsWithChildren, ReactElement, useMemo} from 'react';
+import React, {
+  MouseEventHandler,
+  PropsWithChildren,
+  ReactElement,
+  useMemo
+} from 'react';
 import classnames from 'classnames';
 
 type ButtonVariant = 'standard' | 'outline';
@@ -20,19 +25,19 @@ export interface IButtonProps {
 }
 
 export const Button = ({
- children,
- className = '',
- variant = 'standard',
- color = 'default',
- shape = 'standard',
- leftIcon,
- leftIconClass = '',
- rightIcon,
- rightIconClass = '',
- type = 'button',
- disabled,
- ...props
-}: PropsWithChildren<IButtonProps>) => {
+                         children,
+                         className = '',
+                         variant = 'standard',
+                         color = 'default',
+                         shape = 'standard',
+                         leftIcon,
+                         leftIconClass = '',
+                         rightIcon,
+                         rightIconClass = '',
+                         type = 'button',
+                         disabled,
+                         ...props
+                       }: PropsWithChildren<IButtonProps>) => {
   const buttonTheme = useMemo(() => {
     const classes: string[] = [];
     if (color !== 'default') {

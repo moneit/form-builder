@@ -1,6 +1,6 @@
 import React from 'react';
-import {MessageIcon, TCPIcon} from '../../components/icons';
-import UserImage from '../../assets/images/user.png';
+import { MessageIcon, TCPIcon } from './icons';
+import UserImage from '@/assets/images/user.png';
 
 export const Header = () => {
   return (

@@ -1,6 +1,10 @@
-import React, {PropsWithChildren, ReactNode, useState} from 'react';
+import React, {
+  PropsWithChildren,
+  ReactNode,
+  useState,
+} from 'react';
 import classnames from 'classnames';
-import {AngleLeftIcon, AngleRightIcon} from '../icons';
+import { AngleLeftIcon, AngleRightIcon } from './icons';
 
 interface ISidebarProps {
   title: string;
