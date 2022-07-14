@@ -1,22 +1,23 @@
 import React from 'react';
 import Account from './Account';
+import { Tab } from './definitions';
 import Wrapper from './Wrapper';
 import { Tabs } from '@/components';
-import { Tab } from '@/components/Tabs';
+import { Tab as TabInterface } from '@/components/Tabs';
 
-const tabs: Tab[] = [
+const tabs: TabInterface[] = [
   {
-    title: 'Account',
+    title: Tab.Account,
     component: <Account />,
   },
   {
-    title: 'Company',
+    title: Tab.Company,
   },
   {
-    title: 'Deal',
+    title: Tab.Deal,
   },
   {
-    title: 'Other',
+    title: Tab.Other,
   },
 ];
 

@@ -1,33 +1,14 @@
 import React from 'react';
-import { SidebarItem as SidebarItemComponent } from '@/components';
+import { FieldName } from './definitions';
+import SidebarItemComponent, { SidebarItem } from './SidebarItem';
+import { Tab } from '@/components/DesignForm/CollapsableFields/definitions';
 import {
   DropdownIcon,
   EmailIcon,
   PhoneIcon,
   TextIcon,
 } from '@/components/icons';
-import { SidebarItem } from '@/components/SidebarItem';
 import { colors } from '@/constants';
-import {
-  // AccountFormFieldLabel as FieldLabel,
-  AccountFormFieldName as FieldName,
-} from '@/definitions';
-
-// const nameToLableMap: {
-//   [name in FieldName]: FieldLabel;
-// } = {
-//   [FieldName.FirstName]: FieldLabel.FirstName,
-//   [FieldName.LastName]: FieldLabel.LastName,
-//   [FieldName.PhoneNumber]: FieldLabel.PhoneNumber,
-//   [FieldName.Email]: FieldLabel.Email,
-//   [FieldName.Title]: FieldLabel.Title,
-//   [FieldName.Address]: FieldLabel.Address,
-//   [FieldName.PersonId]: FieldLabel.PersonId,
-//   [FieldName.Password]: FieldLabel.Password,
-//   [FieldName.Position]: FieldLabel.Position,
-//   [FieldName.AccountType]: FieldLabel.AccountType,
-//   [FieldName.Attachment]: FieldLabel.Attachment,
-// };
 
 const sidebarItems: SidebarItem[] = [
   {
@@ -80,7 +61,7 @@ const Account = () => {
   return (
     <div className="p-4 flex-grow bg-gray-light">
       {sidebarItems.map((item) => (
-        <SidebarItemComponent key={item.name} item={item} />
+        <SidebarItemComponent key={item.name} item={item} tab={Tab.Account} />
       ))}
     </div>
   );

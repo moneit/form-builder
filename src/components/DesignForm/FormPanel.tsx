@@ -1,36 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDrop } from 'react-dnd';
-import { Form } from './index';
+import { Form } from '.';
+import { nameToLableMap } from './CollapsableFields/Account/definitions';
+import { Tab } from './CollapsableFields/definitions';
+import { DndItem, FieldLabel, FieldName, dndType } from './definitions';
 import { Button, FormField as FormFieldComponent } from '@/components';
-import { config } from '@/constants';
+
+export interface DroppedField {
+  name: FieldName;
+  label: FieldLabel;
+}
+
+export interface ChangedField {
+  name: FieldName;
+  value: any;
+}
 
 interface FormPanelProps {
-  index: number;
   form: Form;
-  onDrop: (item: any, index: number) => void;
-  formIndex?: number;
+  onDrop: (item: DroppedField, index: number) => void;
+  onChange: (field: ChangedField, index: number) => void;
+  formIndex: number;
 }
 
-interface FormField {
-  name: string;
-  label: string;
-  value: string;
-}
-
-const FormPanel = ({ index, form, onDrop, formIndex }: FormPanelProps) => {
-  const [formData, setFormData] = useState<any>({});
-
-  const handleDrop = ({ field }: { field: FormField }) => {
-    onDrop(field, index);
-    setFormData({
-      ...formData,
-      [field.name]: field.value,
-    });
+const FormPanel = ({ form, onDrop, onChange, formIndex }: FormPanelProps) => {
+  const handleDrop = ({ tab, name }: DndItem) => {
+    if (tab === Tab.Account) {
+      const label = nameToLableMap[name];
+      onDrop(
+        {
+          name,
+          label,
+        },
+        formIndex
+      );
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [{ isOver, canDrop }, drop] = useDrop({
-    accept: [config.field],
+    accept: [dndType],
     drop: handleDrop,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -38,30 +47,31 @@ const FormPanel = ({ index, form, onDrop, formIndex }: FormPanelProps) => {
     }),
   });
 
-  const onFieldChange = (name: string, value: string) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const onFieldChange = (name: FieldName, value: string) => {
+    onChange(
+      {
+        name,
+        value,
+      },
+      formIndex
+    );
   };
-
-  const formDataKeys = Object.keys(formData);
 
   return (
     <div ref={drop} className="mt-3">
-      {formIndex && (
+      {!!formIndex && (
         <p className="text-right text-gray-400 text-sm mb-2">{`Page ${formIndex}`}</p>
       )}
       <div className="bg-white p-3">
-        {formDataKeys.length > 0 ? (
+        {form.fields.length > 0 ? (
           <div className="grid grid-cols-2 gap-3 mb-3">
-            {formDataKeys.map((key, i) => (
+            {form.fields.map(({ name, label, value }) => (
               <FormFieldComponent
-                key={key}
-                name={key}
-                label={form.fields[i].label}
-                value={formData[key]}
-                onChange={(e) => onFieldChange(key, e.target.value)}
+                key={name}
+                name={name}
+                label={label}
+                value={value}
+                onChange={(e) => onFieldChange(name, e.target.value)}
               />
             ))}
           </div>

@@ -1,13 +1,14 @@
 import classnames from 'classnames';
 import React from 'react';
 import { Dropdown } from '@/components';
+import { FieldLabel, FieldName } from '@/components/DesignForm/definitions';
 import { EditIcon, EyeIcon, MoreVertIcon } from '@/components/icons';
 
 type type = 'input' | 'select';
 
-export interface FormFieldProps {
-  name: string;
-  label: string;
+export interface FormField {
+  name: FieldName;
+  label: FieldLabel;
   type?: type;
   value: string;
   disabled?: boolean;
@@ -15,7 +16,7 @@ export interface FormFieldProps {
   onChange?: (e: any) => void;
 }
 
-const FormField = ({
+const FormFieldComponent = ({
   name,
   label,
   type = 'input',
@@ -23,7 +24,7 @@ const FormField = ({
   disabled = false,
   activated = true,
   onChange,
-}: FormFieldProps) => {
+}: FormField) => {
   return (
     <div className="border border-dashed border-transparent hover:border-primary px-3 py-2 rounded">
       <div className="flex justify-between mb-1">
@@ -52,7 +53,7 @@ const FormField = ({
             dropdownItemClass="text-xs px-6 font-medium hover:text-danger"
             xPosition="right"
             yPosition="top"
-            onSelect={(item: any) => console.log('item =>', item)}
+            onSelect={() => {}}
           />
         </div>
       </div>
@@ -92,4 +93,4 @@ const FormField = ({
   );
 };
 
-export default FormField;
+export default FormFieldComponent;

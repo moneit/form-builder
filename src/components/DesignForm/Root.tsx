@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import FormPanel from './FormPanel';
-import { Button, CollapsableFields } from '@/components';
-import { FormFieldProps } from '@/components/FormField';
+import CollapsableFields from './CollapsableFields';
+import FormPanel, { ChangedField, DroppedField } from './FormPanel';
+import { Button } from '@/components';
+import { FormField } from '@/components/FormField';
 
 export interface Form {
-  fields: FormFieldProps[];
+  fields: FormField[];
 }
 
 const emptyForm: Form = {
@@ -18,28 +19,58 @@ const DesignForm = () => {
     setForms([...forms, emptyForm]);
   };
 
-  const handleDrop = (field: any, index: number) => {
-    const updateFields = (form: Form, field: any) => ({
-      ...form,
-      fields: form.fields.includes(field)
-        ? form.fields
-        : [...form.fields, field],
-    });
-
+  const handleDrop = (field: DroppedField, formIndex: number) => {
     setForms(
-      forms.map((form, i) => (i !== index ? form : updateFields(form, field)))
+      forms.map((form, index) => {
+        const fieldNames = form.fields.map((field) => field.name);
+
+        const updateFields = () => {
+          return {
+            fields: fieldNames.includes(field.name)
+              ? form.fields
+              : [...form.fields, { ...field, value: '' }],
+          };
+        };
+
+        return index !== formIndex ? form : updateFields();
+      })
+    );
+  };
+
+  const handleChange = (field: ChangedField, formIndex: number) => {
+    setForms(
+      forms.map((form, index) => {
+        const fieldNames = form.fields.map((field) => field.name);
+
+        const updateValue = () => {
+          if (!fieldNames.includes(field.name)) return form;
+
+          return {
+            fields: form.fields.map((oldField) => {
+              if (oldField.name !== field.name) return oldField;
+
+              return {
+                ...oldField,
+                value: field.value,
+              };
+            }),
+          };
+        };
+
+        return index !== formIndex ? form : updateValue();
+      })
     );
   };
 
   return (
     <div className="pt-3 flex-grow flex bg-gray">
-      <CollapsableFields></CollapsableFields>
+      <CollapsableFields />
       <div className="mx-3 w-full pb-3">
         {forms.slice(1, forms.length).map((form, index) => (
           <FormPanel
             key={index + 1}
-            index={index + 1}
             onDrop={handleDrop}
+            onChange={handleChange}
             form={form}
             formIndex={index + 1}
           />
@@ -52,7 +83,12 @@ const DesignForm = () => {
           <div className="border-b border-dashed w-[30%] h-1" />
           <p className="ml-auto text-sm text-gray-400">Page {forms.length}</p>
         </div>
-        <FormPanel index={0} onDrop={handleDrop} form={forms[0]} />
+        <FormPanel
+          formIndex={0}
+          onDrop={handleDrop}
+          onChange={handleChange}
+          form={forms[0]}
+        />
       </div>
     </div>
   );

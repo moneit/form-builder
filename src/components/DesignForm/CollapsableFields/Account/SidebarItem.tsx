@@ -1,25 +1,28 @@
 import React, { ReactNode } from 'react';
 import { useDrag } from 'react-dnd';
-import { config } from '@/constants';
-import { AccountFormFieldName } from '@/definitions';
-
-// extendable
-type FieldName = AccountFormFieldName;
+import { FieldName } from './definitions';
+import { Tab } from '@/components/DesignForm/CollapsableFields/definitions';
+import { DndItem, dndType as type } from '@/components/DesignForm/definitions';
 
 export interface SidebarItem {
   icon: ReactNode;
   name: FieldName;
 }
 
-export interface SidebarItemProps {
+interface SidebarItemProps {
   item: SidebarItem;
+  tab: Tab;
 }
 
-const SidebarItemComponent = ({ item: { icon, name } }: SidebarItemProps) => {
-  const [{ cursor }, drag] = useDrag({
-    type: config.field,
+const SidebarItemComponent = ({
+  item: { icon, name },
+  tab,
+}: SidebarItemProps) => {
+  const [{ cursor }, drag] = useDrag<DndItem, any, { cursor: string }>({
+    type,
     item: {
       name,
+      tab,
     },
     collect: (monitor) => ({
       cursor: monitor.isDragging() ? 'copy' : 'move',
