@@ -1,10 +1,10 @@
 import React from 'react';
-import {IIconProps} from './types';
-import {Icon} from './Icon';
+import { Icon } from './Icon';
+import { IconProps } from './types';
 
-export const UserIcon = (props: IIconProps) => (
+export const UserIcon = (props: IconProps) => (
   <Icon baseWidth={18.2} baseHeight={22.5} {...props}>
-    {(width, height, color) => (
+    {(width, height) => (
       <svg width={width} height={height} viewBox="0 0 18.2 22.5">
         <g transform="translate(-3.5 -0.5)">
           <circle

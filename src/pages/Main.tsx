@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  ITabContent,
   AppLayout,
-  Tab,
-  Header,
   DataModel,
-  FormSettings,
   DesignForm,
+  FormSettings,
+  Header,
+  Tabs,
 } from '@/components';
+import { Tab } from '@/components/Tabs';
 
-const tabs: ITabContent[] = [
+const tabs: Tab[] = [
   {
     title: 'Design Form',
     component: <DesignForm />,
@@ -26,14 +26,11 @@ const tabs: ITabContent[] = [
 
 const Main = () => {
   return (
-    <AppLayout >
+    <AppLayout>
       <Header />
-      <Tab
-        tabs={tabs}
-        tabHeaderContainerClass="border-b"
-      />
+      <Tabs tabs={tabs} tabHeaderContainerClass="border-b" />
     </AppLayout>
-  )
+  );
 };
 
 export default Main;

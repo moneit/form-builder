@@ -1,8 +1,8 @@
 import React from 'react';
-import {IIconProps} from './types';
-import {Icon} from './Icon';
+import { Icon } from './Icon';
+import { IconProps } from './types';
 
-export const EmailIcon = (props: IIconProps) => (
+export const EmailIcon = (props: IconProps) => (
   <Icon baseWidth={13} baseHeight={13} {...props}>
     {(width, height, color) => (
       <svg width={width} height={height} viewBox="0 0 13 13">

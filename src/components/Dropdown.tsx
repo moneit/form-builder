@@ -1,13 +1,14 @@
+import classnames from 'classnames';
 import React, {
-  ReactElement,
   PropsWithChildren,
+  ReactElement,
   useEffect,
   useMemo,
   useRef,
-  useState
+  useState,
 } from 'react';
-import classnames from 'classnames';
-import { Button, IButtonProps } from './Button';
+import { Button } from '@/components';
+import { ButtonProps } from '@/components/Button';
 
 export type XPosition = 'before' | 'after' | 'left' | 'center' | 'right';
 export type YPosition = 'above' | 'below' | 'top' | 'bottom';
@@ -18,11 +19,11 @@ export type IDropdownItem = {
   [key: string]: any;
 };
 
-export interface IDropdownProps {
+export interface DropdownProps {
   className?: string;
   text?: string | ReactElement;
   button?: ReactElement;
-  buttonProps?: IButtonProps;
+  buttonProps?: ButtonProps;
   arrow?: ReactElement | null;
   dropdown?: IDropdownItem[];
   dropdownClass?: string;
@@ -38,26 +39,26 @@ export interface IDropdownProps {
   onDropdownClosed?: () => void;
 }
 
-export const Dropdown = ({
-                           className = '',
-                           text = '',
-                           button,
-                           buttonProps,
-                           arrow,
-                           dropdown,
-                           dropdownClass = '',
-                           dropdownItemClass = '',
-                           dropdownOpened = false,
-                           activeDropdownItemClass = 'font-bold',
-                           disabled,
-                           activeItem,
-                           xPosition = 'left',
-                           yPosition = 'below',
-                           children,
-                           onSelect = () => {},
-                           onDropdownOpened = () => {},
-                           onDropdownClosed = () => {},
-                         }: PropsWithChildren<IDropdownProps>) => {
+const Dropdown = ({
+  className = '',
+  text = '',
+  button,
+  buttonProps,
+  arrow,
+  dropdown,
+  dropdownClass = '',
+  dropdownItemClass = '',
+  dropdownOpened = false,
+  activeDropdownItemClass = 'font-bold',
+  disabled,
+  activeItem,
+  xPosition = 'left',
+  yPosition = 'below',
+  children,
+  onSelect = () => {},
+  onDropdownOpened = () => {},
+  onDropdownClosed = () => {},
+}: PropsWithChildren<DropdownProps>) => {
   const [opened, setOpened] = useState(dropdownOpened);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -72,8 +73,7 @@ export const Dropdown = ({
 
     const clickListener = (e: MouseEvent) => {
       let el: Node | null = e.target as Node;
-      if (!el || !el.parentNode)
-        return;
+      if (!el || !el.parentNode) return;
 
       while (el && el !== ref.current) {
         el = el.parentNode;
@@ -90,30 +90,35 @@ export const Dropdown = ({
   }, [opened]);
 
   const arrowIcon = useMemo(() => {
-    if (arrow === null)
-      return undefined;
+    if (arrow === null) return undefined;
 
-    if (buttonProps?.rightIcon)
-      return buttonProps.rightIcon;
+    if (buttonProps?.rightIcon) return buttonProps.rightIcon;
 
     if (arrow) {
       return (
-        <div className={classnames('transform transition-transform', { 'rotate-180': opened })}>
+        <div
+          className={classnames('transform transition-transform', {
+            'rotate-180': opened,
+          })}
+        >
           {arrow}
         </div>
       );
     }
     return (
-      <i className={classnames('fa fa-angle-down transform transition-transform', { 'rotate-180': opened })} />
+      <i
+        className={classnames(
+          'fa fa-angle-down transform transition-transform',
+          { 'rotate-180': opened }
+        )}
+      />
     );
   }, [arrow, buttonProps, opened]);
 
   const onToggle = () => {
     setOpened(!opened);
-    if (opened)
-      onDropdownClosed();
-    else
-      onDropdownOpened();
+    if (opened) onDropdownClosed();
+    else onDropdownOpened();
   };
 
   const onSelectItem = (item: IDropdownItem) => {
@@ -125,8 +130,7 @@ export const Dropdown = ({
   };
 
   useEffect(() => {
-    if (!opened || !ref.current)
-      return;
+    if (!opened || !ref.current) return;
 
     const dropdown = ref.current.querySelector('.dropdown-wrapper');
     if (!(dropdown instanceof HTMLElement)) return;
@@ -148,21 +152,23 @@ export const Dropdown = ({
   }, [opened, xPosition, yPosition]);
 
   return (
-    <div
-      className={classnames('relative transition-all', className)}
-      ref={ref}
-    >
+    <div className={classnames('relative transition-all', className)} ref={ref}>
       {button ? (
-        <div onClick={onToggle}>{button}</div>
+        <div onClick={onToggle} aria-hidden="true">
+          {button}
+        </div>
       ) : (
         <Button
           {...buttonProps}
           className={classnames(
             '!justify-between !normal-case',
-            buttonProps?.className,
+            buttonProps?.className
           )}
           rightIcon={arrowIcon}
-          rightIconClass={classnames(buttonProps?.rightIconClass, '!ml-auto pl-2')}
+          rightIconClass={classnames(
+            buttonProps?.rightIconClass,
+            '!ml-auto pl-2'
+          )}
           disabled={disabled}
           onClick={onToggle}
         >
@@ -170,28 +176,33 @@ export const Dropdown = ({
         </Button>
       )}
 
-      <div className={classnames(
-        'dropdown-wrapper absolute z-50 bg-white shadow-md transition-all',
-        dropdownClass,
-        opened ? 'max-h-56 overflow-auto' : '!max-h-0 !py-0 overflow-hidden',
-        { 'left-0': xPosition === 'left' },
-        { 'right-0': xPosition === 'right' },
-        { 'top-6': yPosition === 'top' },
-      )}>
-        {dropdown ? dropdown.map((item, index) => (
+      <div
+        className={classnames(
+          'dropdown-wrapper absolute z-50 bg-white shadow-md transition-all',
+          dropdownClass,
+          opened ? 'max-h-56 overflow-auto' : '!max-h-0 !py-0 overflow-hidden',
+          { 'left-0': xPosition === 'left' },
+          { 'right-0': xPosition === 'right' },
+          { 'top-6': yPosition === 'top' }
+        )}
+      >
+        {dropdown?.map((item, index) => (
           <div
             key={index}
             className={classnames(
               'hover:text-primary px-3 py-2 cursor-pointer transition-all',
               dropdownItemClass,
-              item === activeItem ? activeDropdownItemClass : '',
+              item === activeItem ? activeDropdownItemClass : ''
             )}
             onClick={() => onSelectItem(item)}
+            aria-hidden="true"
           >
             {item.text}
           </div>
-        )) : children}
+        )) || children}
       </div>
     </div>
   );
 };
+
+export default Dropdown;

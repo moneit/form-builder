@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
-import { Button, FormField } from '@/components';
-import { IForm } from './index';
+import { Form } from './index';
+import { Button, FormField as FormFieldComponent } from '@/components';
 import { config } from '@/constants';
 
-interface IFormPanelProps {
+interface FormPanelProps {
   index: number;
-  form: IForm;
+  form: Form;
   onDrop: (item: any, index: number) => void;
   formIndex?: number;
 }
 
-const FormPanel = ({
-  index,
-  form,
-  onDrop,
-  formIndex
-}: IFormPanelProps) => {
+interface FormField {
+  name: string;
+  label: string;
+  value: string;
+}
+
+const FormPanel = ({ index, form, onDrop, formIndex }: FormPanelProps) => {
   const [formData, setFormData] = useState<any>({});
 
-  const handleDrop = (item: any) => {
-    onDrop(item.field, index);
+  const handleDrop = ({ field }: { field: FormField }) => {
+    onDrop(field, index);
     setFormData({
       ...formData,
-      [item.field.name]: item.field.value
+      [field.name]: field.value,
     });
   };
 
-  const [{isOver, canDrop}, drop] = useDrop({
-    accept: ([config.field]),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [{ isOver, canDrop }, drop] = useDrop({
+    accept: [config.field],
     drop: handleDrop,
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -39,9 +41,11 @@ const FormPanel = ({
   const onFieldChange = (name: string, value: string) => {
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
+
+  const formDataKeys = Object.keys(formData);
 
   return (
     <div ref={drop} className="mt-3">
@@ -49,11 +53,11 @@ const FormPanel = ({
         <p className="text-right text-gray-400 text-sm mb-2">{`Page ${formIndex}`}</p>
       )}
       <div className="bg-white p-3">
-        {Object.keys(formData).length > 0 ? (
+        {formDataKeys.length > 0 ? (
           <div className="grid grid-cols-2 gap-3 mb-3">
-            {Object.keys(formData).map((key, i) => (
-              <FormField
-                key={i}
+            {formDataKeys.map((key, i) => (
+              <FormFieldComponent
+                key={key}
                 name={key}
                 label={form.fields[i].label}
                 value={formData[key]}
@@ -71,7 +75,7 @@ const FormPanel = ({
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default FormPanel;

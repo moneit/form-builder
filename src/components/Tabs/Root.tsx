@@ -1,31 +1,31 @@
-import React, { ReactNode, useState } from 'react';
 import classnames from 'classnames';
+import React, { ReactNode, useState } from 'react';
 import TabHeader from './TabHeader';
 
-export interface ITabContent {
+export interface Tab {
   title: string;
-  component?: ReactNode
+  component?: ReactNode;
 }
 
-interface ITabProps {
-  tabs: ITabContent[];
+interface TabsProps {
+  tabs: Tab[];
   tabHeaderItemClass?: string;
   tabHeaderContainerClass?: string;
 }
 
-export const Tab = ({
+const Tabs = ({
   tabs,
-  tabHeaderItemClass ,
-  tabHeaderContainerClass = ''
-}: ITabProps) => {
+  tabHeaderItemClass,
+  tabHeaderContainerClass = '',
+}: TabsProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  return(
+  return (
     <>
       <div className={classnames(`flex bg-white ${tabHeaderContainerClass}`)}>
         {tabs.map((tab, index) => (
           <TabHeader
-            key={index}
+            key={tab.title}
             title={tab.title}
             isActive={index === activeIndex}
             onTabHeaderItemClick={() => setActiveIndex(index)}
@@ -35,5 +35,7 @@ export const Tab = ({
       </div>
       {tabs[activeIndex]?.component}
     </>
-  )
+  );
 };
+
+export default Tabs;

@@ -1,8 +1,8 @@
-import React, { ReactElement, useMemo } from 'react';
-import { color, iconDefaultColors, IIconProps } from './types';
 import classnames from 'classnames';
+import React, { ReactElement, useMemo } from 'react';
+import { IconProps, color, iconDefaultColors } from './types';
 
-export interface IAbstractIconProps extends IIconProps {
+export interface AbstractIconProps extends IconProps {
   baseWidth: number;
   baseHeight: number;
   color?: color[] | color;
@@ -17,16 +17,23 @@ export const Icon = ({
   baseHeight,
   children,
   ...props
-}: IAbstractIconProps) => {
+}: AbstractIconProps) => {
   const width = useMemo(() => size || baseWidth, [size, baseWidth]);
-  const height = useMemo(() => width / baseWidth * baseHeight, [width, baseWidth, baseHeight]);
-  const colors = useMemo(() => (
-    (Array.isArray(color) ? color : [color]).map((col) => iconDefaultColors[col] ?? color)
-  ), [color]);
+  const height = useMemo(
+    () => (width / baseWidth) * baseHeight,
+    [width, baseWidth, baseHeight]
+  );
+  const colors = useMemo(
+    () =>
+      (Array.isArray(color) ? color : [color]).map(
+        (col) => iconDefaultColors[col] ?? color
+      ),
+    [color]
+  );
 
   return (
     <div className={classnames('inline-flex', className)} {...props}>
       {children(`${width / 16}rem`, `${height / 16}rem`, ...colors)}
     </div>
   );
-}
+};

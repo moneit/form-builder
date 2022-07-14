@@ -1,7 +1,7 @@
 import React from 'react';
-import { TradeIcon } from './icons';
+import { TradeIcon } from '@/components/icons';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <section className="bg-secondary py-16">
       <div className="container mx-auto flex justify-between">
@@ -10,7 +10,8 @@ export const Footer = () => {
             <TradeIcon />
           </div>
           <p className="text-white text-sm">
-            The most advanced Trade Finance Platform built specifically for Emerging Markets that lets you access capital on your own terms.
+            The most advanced Trade Finance Platform built specifically for
+            Emerging Markets that lets you access capital on your own terms.
           </p>
         </div>
         <div>
@@ -18,20 +19,38 @@ export const Footer = () => {
           <div className="text-white text-sm">
             Address: DD-15-134-004-007, Level 15, <br />
             Webwork Hub71, AI Khatem Tower, ADGM <br />
-            Square, AI Maryah Island, Abu Dhabi, United <br/>
+            Square, AI Maryah Island, Abu Dhabi, United <br />
             Arab Emirates;
           </div>
         </div>
         <div>
           <h2 className="text-2xl text-white my-4 font-bold">Links</h2>
           <ul className="text-sm text-white">
-            <li><a href="https://test.com" target="_blank" rel="noreferrer">Privacy Policy</a></li>
-            <li><a href="https://test.com" target="_blank" rel="noreferrer">Terms & Conditions</a></li>
-            <li><a href="https://test.com" target="_blank" rel="noreferrer">Website</a></li>
-            <li><a href="https://test.com" target="_blank" rel="noreferrer">Support</a></li>
+            <li>
+              <a href="https://test.com" target="_blank" rel="noreferrer">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="https://test.com" target="_blank" rel="noreferrer">
+                Terms & Conditions
+              </a>
+            </li>
+            <li>
+              <a href="https://test.com" target="_blank" rel="noreferrer">
+                Website
+              </a>
+            </li>
+            <li>
+              <a href="https://test.com" target="_blank" rel="noreferrer">
+                Support
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </section>
-  )
+  );
 };
+
+export default Footer;

@@ -1,95 +1,61 @@
 import React, { useState } from 'react';
-import {
-  IFormFieldProps,
-  ITabContent,
-  Button,
-  Sidebar,
-  Tab
-} from '@/components';
-
-import Account from './Account';
 import FormPanel from './FormPanel';
+import { Button, CollapsableFields } from '@/components';
+import { FormFieldProps } from '@/components/FormField';
 
-export interface IForm {
-  fields: IFormFieldProps[];
+export interface Form {
+  fields: FormFieldProps[];
 }
 
-const sidebarTags: ITabContent[] = [
-  {
-    title: 'Account',
-    component: <Account />
-  },
-  {
-    title: 'Company'
-  },
-  {
-    title: 'Deal'
-  },
-  {
-    title: 'Other'
-  },
-];
-
-const emptyForm: IForm = {
+const emptyForm: Form = {
   fields: [],
 };
 
-export const DesignForm = () => {
-  const [forms, setForms] = useState<IForm[]>([emptyForm]);
+const DesignForm = () => {
+  const [forms, setForms] = useState<Form[]>([emptyForm]);
 
   const addNewForm = () => {
-    setForms([
-      ...forms,
-      emptyForm
-    ]);
+    setForms([...forms, emptyForm]);
   };
 
-  const onDropField = (item: any, index: number) => {
-    setForms(forms.map((form, i) =>
-      i !== index
-        ? form
-        : {
-          ...form,
-          fields: [...form.fields, item]
-        }
-    ));
+  const handleDrop = (field: any, index: number) => {
+    const updateFields = (form: Form, field: any) => ({
+      ...form,
+      fields: form.fields.includes(field)
+        ? form.fields
+        : [...form.fields, field],
+    });
+
+    setForms(
+      forms.map((form, i) => (i !== index ? form : updateFields(form, field)))
+    );
   };
 
   return (
     <div className="pt-3 flex-grow flex bg-gray">
-      <Sidebar title="Available Fields">
-        <Tab
-          tabs={sidebarTags}
-          tabHeaderItemClass="p-2 text-xs"
-        />
-      </Sidebar>
+      <CollapsableFields></CollapsableFields>
       <div className="mx-3 w-full pb-3">
         {forms.slice(1, forms.length).map((form, index) => (
           <FormPanel
             key={index + 1}
             index={index + 1}
-            onDrop={onDropField}
+            onDrop={handleDrop}
             form={form}
             formIndex={index + 1}
           />
         ))}
         <div className="my-4 flex items-center">
           <div className="border-b border-dashed w-[30%] h-1" />
-          <Button
-            className="text-primary"
-            onClick={addNewForm}
-          >
+          <Button className="text-primary" onClick={addNewForm}>
             + Add New Page Here
           </Button>
           <div className="border-b border-dashed w-[30%] h-1" />
           <p className="ml-auto text-sm text-gray-400">Page {forms.length}</p>
         </div>
-        <FormPanel
-          index={0}
-          onDrop={onDropField}
-          form={forms[0]}
-        />
+        <FormPanel index={0} onDrop={handleDrop} form={forms[0]} />
       </div>
     </div>
-  )
+  );
 };
+
+export default DesignForm;

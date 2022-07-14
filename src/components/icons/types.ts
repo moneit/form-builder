@@ -1,6 +1,6 @@
-import {ReactEventHandler} from 'react';
+import { ReactEventHandler } from 'react';
 
-export interface IIconProps {
+export interface IconProps {
   className?: string;
   size?: number;
   color?: color | color[];
@@ -12,14 +12,14 @@ export type color = 'white' | 'black' | 'text' | 'primary' | 'info' | 'success' 
 export const iconDefaultColors: {
   [key: string]: string,
  } = {
-  white: '#FFF',
-  black: '#000',
-  text: '#424242',
-  primary: '#F6A734',
-  info: '#2FB4DD',
-  success: '#A3CE5E',
-  danger: '#D23629',
-  blue: '#307CD8',
-  'blue-light': '#2680EB',
-  'blue-dark': '#0B1C34',
-};
+   white: '#FFF',
+   black: '#000',
+   text: '#424242',
+   primary: '#F6A734',
+   info: '#2FB4DD',
+   success: '#A3CE5E',
+   danger: '#D23629',
+   blue: '#307CD8',
+   'blue-light': '#2680EB',
+   'blue-dark': '#0B1C34',
+ };

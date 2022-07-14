@@ -1,8 +1,8 @@
 import React from 'react';
-import {IIconProps} from './types';
-import {Icon} from './Icon';
+import { Icon } from './Icon';
+import { IconProps } from './types';
 
-export const HelpIcon = (props: IIconProps) => (
+export const HelpIcon = (props: IconProps) => (
   <Icon baseWidth={31.9} baseHeight={31.9} {...props}>
     {(width, height, color) => (
       <svg width={height} height={height} viewBox="0 0 31.9 31.9">

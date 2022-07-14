@@ -1,16 +1,16 @@
+import classnames from 'classnames';
 import React, {
   MouseEventHandler,
   PropsWithChildren,
   ReactElement,
-  useMemo
+  useMemo,
 } from 'react';
-import classnames from 'classnames';
 
 type ButtonVariant = 'standard' | 'outline';
 type ButtonColor = 'default' | 'primary' | 'primary-o' | 'secondary' | 'gray';
 type ButtonShape = 'standard' | 'icon';
 
-export interface IButtonProps {
+export interface ButtonProps {
   variant?: ButtonVariant;
   color?: ButtonColor;
   className?: string;
@@ -24,20 +24,20 @@ export interface IButtonProps {
   disabled?: boolean;
 }
 
-export const Button = ({
-                         children,
-                         className = '',
-                         variant = 'standard',
-                         color = 'default',
-                         shape = 'standard',
-                         leftIcon,
-                         leftIconClass = '',
-                         rightIcon,
-                         rightIconClass = '',
-                         type = 'button',
-                         disabled,
-                         ...props
-                       }: PropsWithChildren<IButtonProps>) => {
+const Button = ({
+  children,
+  className = '',
+  variant = 'standard',
+  color = 'default',
+  shape = 'standard',
+  leftIcon,
+  leftIconClass = '',
+  rightIcon,
+  rightIconClass = '',
+  type = 'button',
+  disabled,
+  ...props
+}: PropsWithChildren<ButtonProps>) => {
   const buttonTheme = useMemo(() => {
     const classes: string[] = [];
     if (color !== 'default') {
@@ -48,15 +48,21 @@ export const Button = ({
         if (variant === 'standard') {
           classes.push('bg-primary text-white border-primary');
         } else {
-          classes.push('text-primary border-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white');
+          classes.push(
+            'text-primary border-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white'
+          );
         }
         break;
 
       case 'primary-o':
         if (variant === 'standard') {
-          classes.push('bg-primary bg-opacity-24 text-primary border-transparent hover:bg-opacity-12');
+          classes.push(
+            'bg-primary bg-opacity-24 text-primary border-transparent hover:bg-opacity-12'
+          );
         } else {
-          classes.push('text-primary border-primary hover:bg-primary bg-opacity-24 hover:text-white');
+          classes.push(
+            'text-primary border-primary hover:bg-primary bg-opacity-24 hover:text-white'
+          );
         }
         break;
 
@@ -64,7 +70,9 @@ export const Button = ({
         if (variant === 'standard') {
           classes.push('bg-secondary text-white border-secondary');
         } else {
-          classes.push('text-secondary border-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white');
+          classes.push(
+            'text-secondary border-secondary hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white'
+          );
         }
         break;
 
@@ -72,7 +80,9 @@ export const Button = ({
         if (variant === 'standard') {
           classes.push('bg-gray-500 text-white border-gray-500');
         } else {
-          classes.push('text-gray-500 border-gray-500 hover:bg-gray-500 hover:text-white');
+          classes.push(
+            'text-gray-500 border-gray-500 hover:bg-gray-500 hover:text-white'
+          );
         }
         break;
     }
@@ -92,25 +102,31 @@ export const Button = ({
       disabled={disabled}
       {...props}
     >
-      {
-        !!leftIcon && (
-          <div className={classnames(
+      {!!leftIcon && (
+        <div
+          className={classnames(
             'flex-shrink-0 flex items-center',
             { 'mr-2': shape !== 'icon' },
             leftIconClass
-          )}>{leftIcon}</div>
-        )
-      }
-      { children }
-      {
-        !!rightIcon && (
-          <div className={classnames(
+          )}
+        >
+          {leftIcon}
+        </div>
+      )}
+      {children}
+      {!!rightIcon && (
+        <div
+          className={classnames(
             'flex-shrink-0 flex items-center',
             { 'ml-2': shape !== 'icon' },
             rightIconClass
-          )}>{rightIcon}</div>
-        )
-      }
+          )}
+        >
+          {rightIcon}
+        </div>
+      )}
     </button>
   );
 };
+
+export default Button;

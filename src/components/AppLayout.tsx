@@ -1,18 +1,16 @@
-import React, { PropsWithChildren, useState } from 'react';
 import classnames from 'classnames';
-import { NavItem, Footer } from './index';
+import React, { Component, PropsWithChildren, useState } from 'react';
+import { Footer, NavItem } from './index';
 import {
   AngleLeftIcon,
   ArrowRightIcon,
   HelpIcon,
   MessageIcon,
   SettingIcon,
-  UserIcon
+  UserIcon,
 } from '@/components/icons';
 
-export const AppLayout = ({
-  children
-}:PropsWithChildren) => {
+const AppLayout = ({ children }: PropsWithChildren) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapse = () => {
@@ -22,10 +20,12 @@ export const AppLayout = ({
   return (
     <div className="bg-gray flex flex-col">
       <div className="flex bg-secondary">
-        <div className={classnames(
-          "bg-transparent transition-all duration-700 ease-in-out",
-          collapsed ? 'w-[45px]' : 'w-[180px]',
-        )}>
+        <div
+          className={classnames(
+            'bg-transparent transition-all duration-700 ease-in-out',
+            collapsed ? 'w-[45px]' : 'w-[180px]'
+          )}
+        >
           <div className="border-b border-white px-4">
             <div className="mt-[120px]">
               <NavItem
@@ -34,14 +34,13 @@ export const AppLayout = ({
                 className="mb-4"
               />
               <NavItem
-                icon={collapsed ? (
-                  <ArrowRightIcon size={16} color="white" />
-                ) : (
-                  <AngleLeftIcon
+                icon={
+                  <Component
+                    as={collapsed ? ArrowRightIcon : AngleLeftIcon}
                     size={16}
                     color="white"
                   />
-                )}
+                }
                 text="Collapse"
                 onClick={toggleCollapse}
               />
@@ -53,12 +52,7 @@ export const AppLayout = ({
                 className="mb-4"
               />
               <NavItem
-                icon={
-                  <SettingIcon
-                    size={16}
-                    color="white"
-                  />
-                }
+                icon={<SettingIcon size={16} color="white" />}
                 text="Settings"
                 className="mb-4"
               />
@@ -83,5 +77,7 @@ export const AppLayout = ({
       </div>
       <Footer />
     </div>
-  )
+  );
 };
+
+export default AppLayout;

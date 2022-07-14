@@ -1,7 +1,5 @@
 import React from 'react';
 
-export const DataModel = () => {
-  return(
-    <div>Data Model</div>
-  )
-};
+const DataModel = () => <div>Data Model</div>;
+
+export default DataModel;

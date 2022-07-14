@@ -1,8 +1,8 @@
 import React from 'react';
-import {IIconProps} from './types';
-import {Icon} from './Icon';
+import { Icon } from './Icon';
+import { IconProps } from './types';
 
-export const EyeIcon = (props: IIconProps) => (
+export const EyeIcon = (props: IconProps) => (
   <Icon baseWidth={24} baseHeight={24} {...props}>
     {(width, height, color) => (
       <svg width={width} height={height} viewBox="0 0 24 24">

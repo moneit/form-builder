@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useDrag } from 'react-dnd';
 import { config } from '@/constants';
-import { IFormFieldProps } from './FormField';
+import { AccountFormFieldName } from '@/definitions';
 
-export interface ISidebarItemProps {
-  icon: any;
-  name: string;
-  field: IFormFieldProps
+// extendable
+type FieldName = AccountFormFieldName;
+
+export interface SidebarItem {
+  icon: ReactNode;
+  name: FieldName;
 }
 
-export const SidebarItem = ({
-  icon,
-  name,
-  field,
-}: ISidebarItemProps) => {
-  const [{cursor}, drag] = useDrag({
+export interface SidebarItemProps {
+  item: SidebarItem;
+}
+
+const SidebarItemComponent = ({ item: { icon, name } }: SidebarItemProps) => {
+  const [{ cursor }, drag] = useDrag({
+    type: config.field,
     item: {
-      type: config.field,
-      field
+      name,
     },
     collect: (monitor) => ({
       cursor: monitor.isDragging() ? 'copy' : 'move',
@@ -29,12 +31,12 @@ export const SidebarItem = ({
     <div
       ref={drag}
       className="flex items-center bg-primary-light mb-3 rounded p-2"
-      style={{cursor}}
+      style={{ cursor }}
     >
       {icon}
-      <span className="ml-3 text-xs text-secondary">
-        {name}
-      </span>
+      <span className="ml-3 text-xs text-secondary">{name}</span>
     </div>
-  )
+  );
 };
+
+export default SidebarItemComponent;

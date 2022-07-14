@@ -1,10 +1,10 @@
 import React from 'react';
-import {IIconProps} from './types';
-import {Icon} from './Icon';
+import { Icon } from './Icon';
+import { IconProps } from './types';
 
-export const TradeIcon = (props: IIconProps) => (
+export const TradeIcon = (props: IconProps) => (
   <Icon baseWidth={269.49} baseHeight={81.89} {...props}>
-    {(width, height, color) => (
+    {(width, height) => (
       <svg width={width} height={height} viewBox="0 0 269.49 81.89">
         <g transform="translate(-355.846 -1539)">
           <text
