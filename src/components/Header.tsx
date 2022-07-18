@@ -1,5 +1,6 @@
 import React from 'react';
-import { MessageIcon, TCPIcon } from './icons';
+import { FaRegBell } from 'react-icons/fa';
+import { TCPIcon } from './icons';
 import UserImage from '@/assets/images/user.png';
 
 const Header = () => {
@@ -9,7 +10,7 @@ const Header = () => {
       <div className="border-l px-2 flex flex-grow justify-between items-center">
         <input className="outline-none" placeholder="Form title Goes Here" />
         <div className="flex items-center">
-          <MessageIcon size={16} className="mr-3" />
+          <FaRegBell size={16} className="mr-3" />
           <img src={UserImage} className="w-10 h-10" alt="avatar" />
         </div>
       </div>
