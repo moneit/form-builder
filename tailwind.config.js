@@ -4,7 +4,7 @@ for (let i = -100; i < 500; i += 0.5) {
 }
 
 const opacities = {};
-for (let i = 0; i < 100; i ++) {
+for (let i = 0; i < 100; i++) {
   opacities[i] = (i * 0.01).toFixed(2);
 }
 
@@ -13,21 +13,19 @@ const colors = {
     lighter: '#edf2f8',
     light: '#e6f1fe',
     medium: '#aec8d6',
-    DEFAULT: '#0069e5'
+    DEFAULT: '#0069e5',
   },
   secondary: {
-    DEFAULT: '#2c3e4e'
+    DEFAULT: '#2c3e4e',
   },
   gray: {
     DEFAULT: '#fafafa',
-    light: '#f8fcfe'
-  }
+    light: '#f8fcfe',
+  },
 };
 
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       container: {
@@ -50,7 +48,7 @@ module.exports = {
       colors,
       borderColors: colors,
       borderRadius: {
-        'large': '48px'
+        large: '48px',
       },
       backgroundColors: colors,
       textColor: colors,
@@ -78,7 +76,7 @@ module.exports = {
         content: 'fit-content',
       },
       borderWidth: {
-        '1.5': '1.5px',
+        1.5: '1.5px',
         6: '6px',
       },
       opacity: opacities,
@@ -89,9 +87,9 @@ module.exports = {
         max: 10000000,
       },
       animation: {
-        'fade-in': 'fadeIn 150ms ease-in-out',
+        'fade-in': 'fadeIn 100ms ease-in-out',
         'slide-in-up': 'slideInUp 150ms ease-in-out',
-        'zoom-in': 'zoomIn 150ms ease-in-out',
+        'zoom-in': 'zoomIn 100ms ease-in-out',
       },
       boxShadow: {
         md: '0 3px 6px #00000029',

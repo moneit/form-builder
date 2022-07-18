@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import React, { PropsWithChildren, useState } from 'react';
 import { Footer, NavItem } from './index';
+
 import {
-  AngleLeftIcon,
+  ArrowLeftIcon,
   ArrowRightIcon,
   HelpIcon,
   MessageIcon,
@@ -42,7 +43,7 @@ const AppLayout = ({ children }: PropsWithChildren) => {
               )}
               {!collapsed && (
                 <NavItem
-                  icon={<AngleLeftIcon size={16} color="white" />}
+                  icon={<ArrowLeftIcon size={16} color="white" />}
                   text="Collapse"
                   onClick={toggleCollapse}
                 />

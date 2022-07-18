@@ -1,58 +1,61 @@
 import React from 'react';
+import {
+  FaChevronDown,
+  FaEllipsisH,
+  FaFont,
+  FaHashtag,
+  FaHouseUser,
+  FaPhoneAlt,
+  FaRegEnvelope,
+} from 'react-icons/fa';
 import { FieldName } from './definitions';
 import SidebarItemComponent, { SidebarItem } from './SidebarItem';
 import { Tab } from '@/components/DesignForm/CollapsableFields/definitions';
-import {
-  DropdownIcon,
-  EmailIcon,
-  PhoneIcon,
-  TextIcon,
-} from '@/components/icons';
 import { colors } from '@/constants';
 
 const sidebarItems: SidebarItem[] = [
   {
-    icon: <TextIcon size={10} color={colors.iconGray} />,
+    icon: <FaFont size={10} color={colors.iconGray} />,
     name: FieldName.FirstName,
   },
   {
-    icon: <TextIcon size={10} color={colors.iconGray} />,
+    icon: <FaFont size={10} color={colors.iconGray} />,
     name: FieldName.LastName,
   },
   {
-    icon: <PhoneIcon size={10} color={colors.iconGray} />,
+    icon: <FaPhoneAlt size={10} color={colors.iconGray} />,
     name: FieldName.PhoneNumber,
   },
   {
-    icon: <EmailIcon size={10} color={colors.iconGray} />,
+    icon: <FaRegEnvelope size={10} color={colors.iconGray} />,
     name: FieldName.Email,
   },
   {
-    icon: <DropdownIcon size={10} color={colors.iconGray} />,
+    icon: <FaChevronDown size={10} color={colors.iconGray} />,
     name: FieldName.Title,
   },
   {
-    icon: <PhoneIcon size={10} color={colors.iconGray} />,
+    icon: <FaHouseUser size={10} color={colors.iconGray} />,
     name: FieldName.Address,
   },
   {
-    icon: <PhoneIcon size={10} color={colors.iconGray} />,
+    icon: <FaHashtag size={10} color={colors.iconGray} />,
     name: FieldName.PersonId,
   },
   {
-    icon: <PhoneIcon size={10} color={colors.iconGray} />,
+    icon: <FaEllipsisH size={10} color={colors.iconGray} />,
     name: FieldName.Password,
   },
   {
-    icon: <TextIcon size={10} color={colors.iconGray} />,
+    icon: <FaFont size={10} color={colors.iconGray} />,
     name: FieldName.Position,
   },
   {
-    icon: <DropdownIcon size={10} color={colors.iconGray} />,
+    icon: <FaChevronDown size={10} color={colors.iconGray} />,
     name: FieldName.AccountType,
   },
   {
-    icon: <PhoneIcon size={10} color={colors.iconGray} />,
+    icon: <FaFont size={10} color={colors.iconGray} />,
     name: FieldName.Attachment,
   },
 ];

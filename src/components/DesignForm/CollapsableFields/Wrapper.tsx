@@ -16,7 +16,9 @@ const Wrapper = ({ children }: PropsWithChildren) => {
       )}
     >
       <div className="bg-secondary p-2 flex justify-between">
-        <span className="text-white">{!collapsed && 'Available Fields'}</span>
+        <span className="text-white whitespace-nowrap">
+          {!collapsed && 'Available Fields'}
+        </span>
         {collapsed ? (
           <AngleRightIcon
             color="white"

@@ -4,6 +4,7 @@ export * from './types';
 export * from './AngleDown';
 export * from './AngleLeft';
 export * from './AngleRight';
+export * from './ArrowLeft';
 export * from './ArrowRight';
 export * from './Dropdown';
 export * from './Edit';

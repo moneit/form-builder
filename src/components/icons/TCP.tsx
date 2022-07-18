@@ -5,8 +5,8 @@ import { IconProps } from './types';
 export const TCPIcon = (props: IconProps) => (
   <Icon baseWidth={91} baseHeight={36} {...props}>
     {(width, height) => (
-      <svg width={width} height={height} viewBox="0 0 182 72">
-        <g transform="translate(-101 -14)">
+      <svg width={width} height={height} viewBox="0 0 182 90">
+        <g transform="translate(-101 -7)">
           <text
             transform="translate(184 72)"
             fill="#313e4f"
@@ -19,7 +19,7 @@ export const TCPIcon = (props: IconProps) => (
               TCP
             </tspan>
           </text>
-          <g transform="translate(101 20.006)">
+          <g transform="translate(101 23.006)">
             <circle
               cx="29.5"
               cy="29.5"
